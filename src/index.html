@@ -49,28 +49,21 @@
     </nav>
 
     <!-- Page Content -->
+    <button onclick="App.SendMessage(); return false;">Fault</button>
     <div class="container">
 
       <!-- Page Heading -->
       <h1 class="my-4">Dell Products</h1>
 
-      <form onSubmit="App.SendMessage();">
+      <form onSubmit="App.SendMessage(); return false;">
 
         <br>
         <br>
         <br>
         <br>
 
-        <div id = "msgpart" class="custom-select" style="width:240px;">
-
-          <select>
-            <option value="0">Select Component:</option>
-            <option value="1">Mother Board</option>
-            <option value="2">Hard Disk</option>
-            <option value="2">Solid State Drive</option>
-            <option value="2">Display panel</option>
-          </select>
-        </div>
+        Part:<br>
+        <input id="msgpart" type="text" name="Part" size="135">
        
 
         <br>
@@ -78,8 +71,8 @@
         <input id = "msgsender" type="text" name="sender" size = "135"><br>
         Order Number : <br>
         <input id = "msgno" type="text" name="orderNumber" size="135"><br>
-        Description: <br>
-        <input id = "msgdesc" type="text" name="Description" size="135" style="height: 300px; width: 1100px"><br>
+        <!-- Description: <br>
+        <input id = "msgdesc" type="text" name="Description" size="135" style="height: 300px; width: 1100px"><br> -->
         
         </script>
         <br>

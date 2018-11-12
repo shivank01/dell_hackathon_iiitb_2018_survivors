@@ -82,12 +82,20 @@ App = {
     console.log("Message"+Message);
     console.log("No."+Message[1]);
       console.log("desc"+desc);
-      var part = hex_to_ascii(Message[0]);
+      var part = hex_to_ascii(Message[0].toString());
       var no = Message[2];
       var time = Date(Message[3]);
       var sender = Message[4];
-      var msgname = $('#msgname');
-      msgname.append("part "+part);
+
+      var orderno = $('#OrderNo');
+      orderno.empty();
+      orderno.append("part");
+
+      console.log("Hello"+orderno.innerHTML);
+      var ordertime = $('#Time');
+      ordertime.append(time);
+      var ordersender = $('#sender');
+      ordersender.append(sender);
       
       return 2;
     }).then(function(hasVoted) {
@@ -115,19 +123,15 @@ App = {
    }
   return arr1.join('');
    }
-    var NewPart = ascii_to_hexa($('#msgpart'));
+    var NewPart = ascii_to_hexa($('#msgpart').toString());
+     var Newno = Number($('msgno'));
+     var sender = $('msgsender');
     console.log("NewPart"+NewPart);
-    time.sleep(2000);
-    func();
+
+    
 
     App.contracts.messageContract.deployed().then(function(instance) {
-      return instance.sendMessage(NewPart, { from: App.account });
-    }).then(function(result) {
-      // Wait for votes to update
-      $("#content").show();
-      //$("#loader").show();
-    }).catch(function(err) {
-      console.error(err);
+     instance.sendMessage(NewPart,Newno,0xaa,0xc53dd799c36fe7ce3c47e405e0e2a6d2bf7c1826, { from: App.account });
     });
   }
 };

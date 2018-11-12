@@ -1,4 +1,4 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.4.24;
 
 contract messageContract{
     
@@ -16,7 +16,7 @@ contract messageContract{
     message public newMessage =  message(0xcc,0,0xaa,now,0xc53dd799c36fe7ce3c47e405e0e2a6d2bf7c1826,0xc53dd799c36fe7ce3c47e405e0e2a6d2bf7c1826);  //making object
     
     //Constructor
-    function messageContract(){
+    constructor(){
         newMessage.orderpart = 0xcc;  // unique identity
         newMessage.orderno = 0;
         newMessage.orderdesc = 0xaa;  //description
@@ -40,6 +40,6 @@ contract messageContract{
     function readMessage(bytes32 part) constant public returns( uint no, bytes32 desc, uint time, address sender, address receiver){
         if(msg.sender != newMessage.orderreceiver) throw;
         if( newMessage.orderpart != part) throw;
-        return (newMessage.orderno);
+        return (newMessage.orderno,newMessage.orderdesc,newMessage.ordertime,newMessage.ordersender,newMessage.orderreceiver);
     }
 }

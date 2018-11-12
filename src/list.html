@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ethereum backed app</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <title>Ethereum backed app</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -16,15 +16,20 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home
+              <a class="nav-link" href="index.html">Place Order
                 <span class="sr-only">(current)</span>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="list.html">Orders</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="notification.html">Notification</a>
             </li>
           </ul>
         </div>
@@ -38,11 +43,55 @@
 <br>
 <br>
 <h1>
-	Order List
+  Notifications <br><br>
 </h1>
+
+  <!--part number time sender-->
+  <div class="row">
+    <div class="col-lg-12 col-sm-2 portfolio-item ">
+      <div class="card h-60">
+        <div class="card-body">
+          <h4 id = "OrderNo" class="card-title">
+            <a>Order No </a>
+          </h4>
+          <h6 id = "Time">
+            Time
+          </h6>
+          <h8 id = "sender">
+            <font color="red">Sender </font> 
+          </h8>
+          <p id = "description" class="card-text"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    <br>
+    <br>
+    <br>
+
+
+
+  <!---
+  <h7 id = "sender"> Sender </h7>
+  <h8 id = "orderNumber"> OrderNumber </h8>
+  <p id = "timeStamp"> Time </p>
+  <p id = "sender"> Sender </p>
+  -->
+
 
 </div>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+ <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
 
