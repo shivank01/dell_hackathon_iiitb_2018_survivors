@@ -98,22 +98,45 @@ App = {
       var receiver = Message[5];
       if(App.account!=receiver){
         return 0;}
-console.log("hello");
-      var orderno = $('#OrderNo');
-      orderno.empty();
-      orderno.append("Order No: "+no);
-      var orderpart = $('#msgpart');
-      // if(orderpart!=part)
-      //   return 0;
+      console.log("hello");
 
+      console.log('sdhdhjhaiudhuahudhuahdh');
+      console.log(part);
 
-      console.log("no"+no);
-      var ordertime = $('#Time');
-      ordertime.empty();
-      ordertime.append("Time: "+time);
-      var ordersender = $('#sender');
-      ordersender.empty();
-      ordersender.append("Sender: "+sender);
+      if(part == 'HDD'){
+        var orderno = $('#OrderNoHDD');
+        orderno.empty();
+        orderno.append("Order No: "+no);
+        var orderpart = $('#msgpart');
+        // if(orderpart!=part)
+        //   return 0;
+        //console.log("no"+no);
+        
+        var ordertime = $('#TimeHDD');
+        ordertime.empty();
+        ordertime.append("Time: "+time);
+        
+        var ordersender = $('#senderHDD');
+        ordersender.empty();
+        ordersender.append("Sender: "+sender);
+      }
+      else{
+        var orderno = $('#OrderNoSSD');
+        orderno.empty();
+        orderno.append("Order No: "+no);
+        var orderpart = $('#msgpart');
+        // if(orderpart!=part)
+        //   return 0;
+        //console.log("no"+no);
+        
+        var ordertime = $('#TimeSSD');
+        ordertime.empty();
+        ordertime.append("Time: "+time);
+        
+        var ordersender = $('#senderSSD');
+        ordersender.empty();
+        ordersender.append("Sender: "+sender);
+      }
       
       return 1;
     }).then(function(hasVoted) {
