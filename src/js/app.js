@@ -2,7 +2,7 @@ App = {
   web3Provider: null,
   contracts: {},
   account: '0x0',
-  hasVoted: false,
+  receiver1: 0xc53dd799c36fe7ce3c47e405e0e2a6d2bf7c1826,
 
   init: function() {
     return App.initWeb3();
@@ -78,32 +78,51 @@ App = {
   }
   return str;
   }
+    App.contracts.messageContract.deployed().then(function(instance) {
+     receiver = instance.getReceiver( { from: App.account });
+     return receiver;
+    }).then(function(receiver){
+      console.log(receiver);
+       
+        })
+    console.log(App.account);
 
+
+    
     console.log("Message"+Message);
     console.log("No."+Message[1]);
-      console.log("desc"+desc);
       var part = hex_to_ascii(Message[0].toString());
-      var no = Message[2];
+      var no = Message[1].toString();
       var time = Date(Message[3]);
       var sender = Message[4];
-
+      var receiver = Message[5];
+      if(App.account!=receiver){
+        return 0;}
+console.log("hello");
       var orderno = $('#OrderNo');
       orderno.empty();
-      orderno.append("part");
+      orderno.append("Order No: "+no);
+      var orderpart = $('#msgpart');
+      // if(orderpart!=part)
+      //   return 0;
 
-      console.log("Hello"+orderno.innerHTML);
+
+      console.log("no"+no);
       var ordertime = $('#Time');
-      ordertime.append(time);
+      ordertime.empty();
+      ordertime.append("Time: "+time);
       var ordersender = $('#sender');
-      ordersender.append(sender);
+      ordersender.empty();
+      ordersender.append("Sender: "+sender);
       
-      return 2;
+      return 1;
     }).then(function(hasVoted) {
       //console.log("final"+hasVoted);
       //console.log("new"+Message[0]);
       // Do not allow a user to vote
+      console.log("ax");
       if(hasVoted) {
-        $('form').hide();
+        $('abc').hide();
       }
       //loader.hide();
       content.show();
@@ -124,14 +143,14 @@ App = {
   return arr1.join('');
    }
     var NewPart = ascii_to_hexa($('#msgpart').toString());
-     var Newno = Number($('msgno'));
-     var sender = $('msgsender');
+     var Newno = $('#msgnos').val();
+     var sender = $('#msgsender').val();
     console.log("NewPart"+NewPart);
-
+    console.log("NewNo"+Newno);
     
 
     App.contracts.messageContract.deployed().then(function(instance) {
-     instance.sendMessage(NewPart,Newno,0xaa,0xc53dd799c36fe7ce3c47e405e0e2a6d2bf7c1826, { from: App.account });
+     instance.sendMessage(NewPart,Newno,0xaa,sender, { from: App.account });
     });
   }
 };

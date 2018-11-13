@@ -13,15 +13,8 @@ contract messageContract{
     }
 
     uint public x =2;
-    message public newMessage =  message(0xcc,0,0xaa,now,0xc53dd799c36fe7ce3c47e405e0e2a6d2bf7c1826,0xc53dd799c36fe7ce3c47e405e0e2a6d2bf7c1826);  //making object
+    message public newMessage =  message(0x30,2,0xaa,now,0xc53dd799c36fe7ce3c47e405e0e2a6d2bf7c1826,0xc53dd799c36fe7ce3c47e405e0e2a6d2bf7c1826);  //making object
     
-    //Constructor
-    constructor(){
-        newMessage.orderpart = 0xcc;  // unique identity
-        newMessage.orderno = 0;
-        newMessage.orderdesc = 0xaa;  //description
-        newMessage.ordertime = now ; //sending time
-    }
 
     //function to send the message (setter in language of blockchain and solidity)
     function sendMessage(bytes32 part, uint no, bytes32 desc, address addr){
@@ -33,8 +26,8 @@ contract messageContract{
         newMessage.ordertime = now;
     }
 
-    function test(bytes32 part) constant public returns(uint){
-        return (x);
+    function getReceiver() constant public returns(address){
+        return (newMessage.orderreceiver);
     }
     //function to read the message (getter in language of blockchain and solidity)
     function readMessage(bytes32 part) constant public returns( uint no, bytes32 desc, uint time, address sender, address receiver){
